@@ -29,7 +29,7 @@ final class User extends Resource
     private $bio;
 
     /**
-     * @var string
+     * @var ?string
      */
     private $shortBio;
 
@@ -93,12 +93,12 @@ final class User extends Resource
         $this->bio = $bio;
     }
 
-    public function getShortBio(): string
+    public function getShortBio(): ?string
     {
         return $this->shortBio;
     }
 
-    public function setShortBio(string $shortBio): void
+    public function setShortBio(string $shortBio = null): void
     {
         $this->shortBio = $shortBio;
     }

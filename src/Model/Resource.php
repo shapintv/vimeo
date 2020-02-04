@@ -7,7 +7,7 @@ namespace Shapin\Vimeo\Model;
 abstract class Resource
 {
     /**
-     * @var string
+     * @var ?string
      */
     private $uri;
 
@@ -16,12 +16,12 @@ abstract class Resource
      */
     private $resourceKey;
 
-    public function getUri(): string
+    public function getUri(): ?string
     {
         return $this->uri;
     }
 
-    public function setUri(string $uri): void
+    public function setUri(string $uri = null): void
     {
         $this->uri = $uri;
     }
