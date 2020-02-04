@@ -17,9 +17,9 @@ final class VimeoClient
     private $httpClient;
     private $serializer;
 
-    public function __construct(HttpClientInterface $talkjsClient, SerializerInterface $serializer = null)
+    public function __construct(HttpClientInterface $vimeoClient, SerializerInterface $serializer = null)
     {
-        $this->httpClient = $talkjsClient;
+        $this->httpClient = $vimeoClient;
         $this->serializer = $serializer ?: new Serializer();
     }
 
