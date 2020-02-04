@@ -1,5 +1,5 @@
 {
-    "name": "shapin/video",
+    "name": "shapin/vimeo",
     "description": "PHP client for Vimeo API",
     "license": "MIT",
     "keywords": ["api", "vimeo", "video"],
