@@ -36,7 +36,7 @@ $client = new VimeoClient($httpClient);
 
 ```php
 // Get a video
-$video = $client->videos()->get('my_custom_id', 362164795);
+$video = $client->videos()->get(362164795);
 ```
 
 ### Integration with symfony
@@ -59,10 +59,11 @@ Then create your service:
 
 ```yml
 services:
-    Shapin\Vimeo\VimeoClient: ~
+    Shapin\Vimeo\VimeoClient: ['@vimeo.client', ~]
 ```
 
-You're done!
+When do not use autowiring here in order to avoid the injection of the default `Serializer` if you have one.
+This SDK directly build its own `Serializer` when none is passed which is fine for most use cases.
 
 One day, I may consider creating a bundle in order to bootstrap this SDK...
 
