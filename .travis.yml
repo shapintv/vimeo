@@ -1,0 +1,39 @@
+language: php
+
+cache:
+    directories:
+        - $HOME/.composer/cache
+
+env:
+    global:
+        - TEST_COMMAND="composer test"
+
+matrix:
+    fast_finish: true
+    include:
+        # Test with lowest dependencies
+        - php: 7.3
+          env: COMPOSER_FLAGS="--prefer-lowest" SYMFONY_DEPRECATIONS_HELPER="weak"
+
+        # Test the latest stable release
+        - php: 7.3
+        - php: 7.4
+
+        # Dev dependencies
+        - php: 7.4
+          env: STABILITY="dev"
+
+    allow_failures:
+          # Dev-master is allowed to fail.
+        - env: STABILITY="dev"
+
+before_install:
+    - phpenv config-rm xdebug.ini || true
+    - if ! [ -z "$STABILITY" ]; then composer config minimum-stability ${STABILITY}; fi;
+
+install:
+    - composer update ${COMPOSER_FLAGS} --prefer-dist --prefer-stable --no-interaction
+
+script:
+    - composer validate --strict --no-check-lock
+    - $TEST_COMMAND
