@@ -35,4 +35,27 @@ abstract class Resource
     {
         $this->resourceKey = $resourceKey;
     }
+
+    /**
+     * @return int|string
+     */
+    public function getId()
+    {
+        if (null === $this->uri) {
+            throw new \RuntimeException('Unable to find a ID for this resource');
+        }
+
+        $parts = explode('/', $this->uri);
+        if (empty($parts)) {
+            throw new \RuntimeException('Incorrect resource URI given.');
+        }
+
+        $id = end($parts);
+
+        if (is_numeric($id)) {
+            return (int) $id;
+        }
+
+        return $id;
+    }
 }

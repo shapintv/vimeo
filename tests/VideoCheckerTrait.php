@@ -18,6 +18,7 @@ trait VideoCheckerTrait
         $this->assertInstanceOf(Model\Video::class, $video);
 
         $this->assertSame('/videos/362164795', $video->getUri());
+        $this->assertSame(362164795, $video->getId());
         $this->assertSame('The Magic of Chess', $video->getName());
         $this->assertSame("Filmed at the 2019 Elementary Chess Championships at the Nashville Opryland resort, a group of children share their uninhibited, philosophical insights about the benefits of chess.  \n\nPresented by US Chess\n\nProducers: Jenny Schweitzer, Jennifer Shahade\nDirector & DP: Jenny Schweitzer\nExecutive Producer: Richard Schiffrin\nEditor: Michael Mezzina\nProduction Support: Nagham Osman\nTitle Design: Morgan Gruer", $video->getDescription());
         $this->assertSame('video', $video->getType());
@@ -66,6 +67,7 @@ trait VideoCheckerTrait
         $picture = $video->getPictures();
         $this->assertInstanceOf(Model\Picture::class, $picture);
         $this->assertSame('/videos/362164795/pictures/838402890', $picture->getUri());
+        $this->assertSame(838402890, $picture->getId());
         $this->assertTrue($picture->isActive());
         $this->assertSame('custom', $picture->getType());
         $this->assertCount(11, $picture->getSizes());
@@ -92,6 +94,7 @@ trait VideoCheckerTrait
         $category = $categories[0];
         $this->assertInstanceOf(Model\Category::class, $category);
         $this->assertSame('/categories/documentary', $category->getUri());
+        $this->assertSame('documentary', $category->getId());
         $this->assertSame('Documentary', $category->getName());
         $this->assertSame('https://vimeo.com/categories/documentary', $category->getLink());
         $this->assertTrue($category->isTopLevel());
@@ -106,6 +109,7 @@ trait VideoCheckerTrait
         $user = $video->getUser();
         $this->assertInstanceOf(Model\User::class, $user);
         $this->assertSame('/users/3585257', $user->getUri());
+        $this->assertSame(3585257, $user->getId());
         $this->assertSame('Jenny Schweitzer Bell', $user->getName());
         $this->assertSame('https://vimeo.com/jennyschweitzer', $user->getLink());
         $this->assertSame('New York, NY, USA', $user->getLocation());
