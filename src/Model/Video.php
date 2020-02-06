@@ -16,7 +16,7 @@ final class Video extends Resource
     private $name;
 
     /**
-     * @var string
+     * @var ?string
      */
     private $description;
 
@@ -125,12 +125,12 @@ final class Video extends Resource
         $this->name = $name;
     }
 
-    public function getDescription(): string
+    public function getDescription(): ?string
     {
         return $this->description;
     }
 
-    public function setDescription(string $description): void
+    public function setDescription(string $description = null): void
     {
         $this->description = $description;
     }
