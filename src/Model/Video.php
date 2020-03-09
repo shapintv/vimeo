@@ -10,6 +10,16 @@ use Shapin\Vimeo\Model\Video\Stats;
 
 final class Video extends Resource
 {
+    const STATUS_AVAILABLE = 'available';
+    const STATUS_QUOTA_EXCEEDED = 'quota_exceeded';
+    const STATUS_TOTAL_CAP_EXCEEDED = 'total_cap_exceeded';
+    const STATUS_TRANSCODE_STARTING = 'transcode_starting';
+    const STATUS_TRANSCODING = 'transcoding';
+    const STATUS_TRANSCODING_ERROR = 'transcoding_error';
+    const STATUS_UNAVAILABLE = 'unavailable';
+    const STATUS_UPLOADING = 'uploading';
+    const STATUS_UPLOADING_ERROR = 'uploading_error';
+
     /**
      * @var string
      */
@@ -351,5 +361,10 @@ final class Video extends Resource
     public function setStatus(string $status): void
     {
         $this->status = $status;
+    }
+
+    public function isAvailable(): bool
+    {
+        return self::STATUS_AVAILABLE === $this->status;
     }
 }
